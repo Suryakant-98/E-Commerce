@@ -7,13 +7,15 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ProductsComponent } from './components/products/products.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LayoutComponent,
-    ProductsComponent
+    ProductsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
