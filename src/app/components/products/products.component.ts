@@ -21,16 +21,24 @@ export class ProductsComponent implements OnInit{
     ProductImageUrl: '',
   };
   categoryList: any[]= [];
+  productsList: any[]= [];
 
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
-      this.getAllCategory()
+    this.getAllProducts();
+      this.getAllCategory();
   }
 
   getAllCategory(){
     this.productService.getAllCategory().subscribe((res: any) => {
       this.categoryList = res.data;
+    })
+  }
+
+  getAllProducts(){
+    this.productService.getAllProduct().subscribe((res: any) => {
+      this.productsList = res.data;
     })
   }
 
@@ -40,5 +48,16 @@ export class ProductsComponent implements OnInit{
 
   closeSidePanel() {
     this.isSidePanelVisible = false;
+  }
+
+  onSave(){
+    this.productService.saveProduct(this.productObj).subscribe((res: any) => {
+      if (res.result){
+        alert("Product Created");
+        this.getAllProducts();
+      } else {
+        alert(res.message);
+      }
+    });
   }
 }
